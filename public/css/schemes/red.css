@@ -1,0 +1,84 @@
+/*
+#E74C3C
+#C0392B
+
+*/
+.off-canvas-sidebar .button-white{
+	border-color: #E74C3C !important;	
+}
+
+::-moz-selection {
+    color: #ffffff;
+    background: #E74C3C;
+}
+
+::selection {
+    color: #ffffff;
+    background: #E74C3C;
+}
+
+.btn-col,
+.project-details h5, 
+.project-info h5 {
+border-color: #e74c3c;
+color: #e74c3c;
+}
+
+.btn-col:hover {
+color: #C0392B;
+}
+
+.section-title h3, 
+.section-title h4,
+.step-no,
+.sub-steps .icon,
+.sub-steps .sub-text,
+.testimonial .happy-client,
+.client-photos .photo-hold {
+border-color:#e74c3c;
+}
+
+.color-scheme,
+.service-icon,
+.step-no .no-inner,
+.site-name:hover,
+.project-details .details-list li .strong,  
+.social-icons ul li a:hover {
+color:#E74C3C !important;
+}
+
+.site-name span,
+.photo-overlay h4 {
+background-color: #E74C3C;
+}
+
+.photo-zoom:before {
+	border-color: rgba(0, 255, 255, 0) rgba(255, 0, 255, 0) rgba(231, 76, 60, 1) rgba(255, 255, 10, 0);
+
+}
+
+.off-canvas-sidebar .filter .button {
+	margin-bottom: 0.75rem;
+    border: 2px solid #E74C3C !important;
+    border-radius: 10px;
+    background-color: transparent !important;
+	color: #fff;
+	padding:0.5rem;
+	font-weight: 500;
+	font-size: 1.5rem;
+}
+.off-canvas-sidebar .events-slider .swiper-pagination .swiper-pagination-bullet {
+  background-color: #E74C3C !important;
+}
+.off-canvas-sidebar .events-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #fff !important;
+}
+
+.scroll-up a {
+	border:1px solid #E74C3C !important;
+}
+.scroll-up a:hover {
+	background: #E74C3C !important;
+	color: #ffffff;
+	border:1px solid #ffffff !important;
+}
