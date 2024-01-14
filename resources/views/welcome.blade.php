@@ -25,16 +25,21 @@
 				<div class="row">
 					<div class="col-md-7">
 						 <div class="banner-text-content wow fadeInUp" data-wow-duration="1.5s">
-							<h1 class="banner-title">Enjoy Our Majestic Rooms, Views &amp Splendid Cuisines</h1>
-							<p class="banner-text">Come experience our royal 5 star accommodation &amp services!</p>
+						 	@if($rtemplate['appDefaults']->count() != 0)
+								<h1 class="banner-title">{{$rtemplate['appDefaults']->brandHeading}}</h1>
+								<p class="banner-text">{{$rtemplate['appDefaults']->introText}} </span>
+							@else
+								<h1 class="banner-title">Enjoy Our Majestic Rooms, Views &amp Splendid Cuisines</h1>
+								<p class="banner-text">Come experience our royal 5 star accommodation &amp services!</p>
+							@endif
 							<div class="home-buttons">
-								<a href="#" class="fancy-button button-line button-white vertical">
+								<a href="#section-about" class="fancy-button button-line button-white vertical">
 									Learn more
 									<span class="icon">
 										<i class="fa fa-gear"></i>
 									</span>
 								</a>
-								<a href="#" class="fancy-button button-line button-white zoom">
+								<a href="#section-contact" class="fancy-button button-line button-white zoom">
 									Get In Touch
 									<span class="icon">
 										<i class="fa fa-send"></i>
@@ -88,7 +93,33 @@
 				</div>			
 						<!--Features container Starts -->
 						<div id="card-ul" class="col-lg-12 features-hold baraja-container">
-						
+							@if($rtemplate['features']->count() == 0)
+								@foreach($rtemplate['features'] as $ft)
+									<!-- Single Feature Starts -->
+									<div class="col-lg-3 col-md-6 col-sm-6 single-feature animated" data-animation="fadeInLeft" data-animation-delay="700" title="Card style">
+										@if($rtemplate['featuresImages']->count() != 0)
+											@foreach($rtemplate['featuresImages'] as $fi)
+												@if($fi->ref_id == $ft->id)
+													<img src="{{ asset('storage/'.$fi->imagePath)}}" alt="" class="feature-image" /><!-- Feature Icon --> 
+												@endif
+											@endforeach
+										@else										
+											<img src="images/1.jpg" alt="" class="feature-image" /><!-- Feature Icon -->
+										@endif
+										<h4 class="feature-title color-scheme">{{$ft->text}}</h4>
+										<p class="feature-text">
+											{{$ft->body}}
+										</p>
+										
+											<a href="#" class="fancy-button button-line btn-col small vertical">
+												Details
+												<span class="icon">
+													<i class="fa fa-leaf"></i>
+												</span>
+											</a>
+									</div>	
+								@endforeach
+							@else
 							<!-- Single Feature Starts -->
 							<div class="col-lg-3 col-md-6 col-sm-6 single-feature animated" data-animation="fadeInLeft" data-animation-delay="700" title="Card style">
 								<img src="images/1.jpg" alt="" class="feature-image" /><!-- Feature Icon -->
@@ -154,6 +185,7 @@
 								</a>
 							</div>
 							<!-- Single Feature Ends -->
+							@endif
 						</div>
 						<!--Features container Ends -->
 			</div>
@@ -175,18 +207,28 @@
 					
 					<div class="col-md-10 step-details">
 							<h3 class="step-title color-scheme">Get To Know Us Better</h3>
-							<p class="step-description">Cillum laboris <strong>consequat</strong>, qui elit retro next level 
-							skateboard freegan hella. Cillum laboris consequat qui elit retro next level 
-							skateboard freegan hella. Cillum laboris consequat skateboard freegan hella</p>
-							
-							<p class="step-description2">Documenting collected data  qui elit retro next level 
-							skateboard freegan hella. Cillum laboris consequat qui elit retro next level 
-							skateboard freegan hella. Cillum laboris consequat skateboard freegan hella</p>
+							@if(!$rtemplate['appDefaults']->aboutText)
+								<p class="step-description">{{$rtemplate['appDefaults']->aboutText}}</p>
+							@else							
+								<p class="step-description">Cillum laboris <strong>consequat</strong>, qui elit retro next level 
+								skateboard freegan hella. Cillum laboris consequat qui elit retro next level 
+								skateboard freegan hella. Cillum laboris consequat skateboard freegan hella</p>
+								
+								<p class="step-description2">Documenting collected data  qui elit retro next level 
+								skateboard freegan hella. Cillum laboris consequat qui elit retro next level 
+								skateboard freegan hella. Cillum laboris consequat skateboard freegan hella</p>							
+						@endif
 					</div><!-- End step-details -->
 				</div>
 				<!-- Step Description Ends -->
 				<div class="col-lg-6 col-md-12 step-img">
-					<img src="images/about/about1.jpg" alt="" /> <!-- Step Photo Here -->
+					@if($rtemplate['aboutImages']->count() == 1)
+						@foreach($rtemplate['aboutImages'] as $ai)
+							<img src="{{ asset('storage/'.$ai->imagePath)}}" alt="" /><!-- Step Photo Here --> 
+						@endforeach
+					@else				
+						<img src="images/about/about1.jpg" alt="" /> <!-- Step Photo Here -->
+					@endif
 				</div>
 			</div>
 		</div>
@@ -196,17 +238,23 @@
 	<section id="step-1" class="section-step step-wrap">
 	   <!--Client logo-->
 	   <div id="carousel-our-gallery" class="owl-carousel text-center margin-top-20">
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-1.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-2.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-3.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-4.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-5.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-6.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-7.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-1.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-2.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-3.jpg" class="img-responsive" alt="" /> </a> </div>
-		  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-4.jpg" class="img-responsive" alt="" /> </a> </div>
+		@if($rtemplate['carouselImages']->count() > 10)
+			@foreach($rtemplate['carouselImages'] as $ci)	
+			  <div class="our-gallery"> <a href="#"> <img src="{{ asset('storage/'.$ci->imagePath)}}" class="img-responsive" alt="" /> </a> </div>
+			@endforeach
+		@else
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-1.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-2.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-3.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-4.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-5.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-6.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-7.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-1.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-2.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-3.jpg" class="img-responsive" alt="" /> </a> </div>
+			  <div class="our-gallery"> <a href="#"> <img src="images/rooms/room-4.jpg" class="img-responsive" alt="" /> </a> </div>
+		  @endif
 	   </div>
 	   <!--/Client logo--> 
 	</section>
@@ -220,7 +268,21 @@
 				<div class="col-md-10 col-md-offset-1 center section-title">
 					<h3>What we do best</h3>
 				</div>
-			
+				@if($rtemplate['services']->count() == 0)
+					@foreach($rtemplate['services'] as $sv)
+						<!-- Single Service Starts -->
+						<div class="col-md-6 col-sm-6 service animated" data-animation="fadeInLeft" data-animation-delay="700">
+							<span class="service-icon center"><i class="lnr lnr-home fa-3x"></i></span>
+							<div class="service-desc">
+								<h4 class="service-title color-scheme">{{$sv->name}}</h4>
+								<p class="service-description justify">
+									{{$sv->description}}.
+								</p>
+							</div>
+						</div>
+						<!-- Single Service Ends -->	
+					@endforeach
+				@else
 				<!-- Single Service Starts -->
 				<div class="col-md-6 col-sm-6 service animated" data-animation="fadeInLeft" data-animation-delay="700">
 					<span class="service-icon center"><i class="lnr lnr-home fa-3x"></i></span>
@@ -297,7 +359,8 @@
 						</p>
 					</div>
 				</div>
-				<!-- Single Service Ends -->				
+				<!-- Single Service Ends -->
+			@endif
 			</div>
 		</div>
 	</section>
@@ -316,26 +379,37 @@
 					</div>
 					
 					<div class="col-md-10 step-details">
+						@if($rtemplate['banners']->count() == 0)
+							<h3 class="step-title color-scheme">{{$rtemplate['banners'][0]->heading}}</h3>
+							<p class="step-description">{{$rtemplate['banners'][0]->body}}</p>
+						@else
 							<h3 class="step-title color-scheme">Experience The Luxurious Delights</h3>
 							<p class="step-description">Cillum laboris <strong>consequat</strong>, qui elit retro next level 
 							skateboard freegan hella. Cillum laboris consequat qui elit retro next level 
 							skateboard freegan hella. Cillum laboris consequat skateboard freegan hella
 							Documenting collected data  qui elit retro next level skateboard freegan hella. 
 							Cillum laboris consequat qui elit retro next level skateboard freegan hella.
-							Cillum laboris consequat skateboard freegan hella</p>
-							
+							Cillum laboris consequat skateboard freegan hella</p>	
+						@endif								
 							<a href="#section-contact" class="fancy-button button-line button-white zoom">
 									Book A Room
 									<span class="icon">
 										<i class="fa fa-send"></i>
 									</span>
 							</a>
-							
 					</div> <!-- End step-details -->
 				</div>
 				<!-- Step Description Ends -->
 				<div class="col-lg-6 col-md-12 step-img">
-					<img src="images/features/couple.jpg" alt="" /> <!-- Step Photo Here -->
+					@if($rtemplate['bannersImages']->count() != 0)
+						@foreach($rtemplate['bannersImages'] as $bi)
+							@if($bi->ref_id == 1)
+								<img src="{{ asset('storage/'.$bi->imagePath)}}" alt=""/><!-- Step Photo Here --> 
+							@endif
+						@endforeach
+					@else					
+						<img src="images/features/couple.jpg" alt="" /> <!-- Step Photo Here -->
+					@endif
 				</div>
 			</div>
 		</div>
@@ -349,6 +423,33 @@
 				<div class="col-md-10 col-md-offset-1 center section-title">
 					<h3>Our Facilities</h3>
 				</div>
+			@if($rtemplate['projectTypes']->count() == 0)
+				@foreach($rtemplate['projectTypes'] as $pt)
+					<!-- Single screenshot starts -->
+					<div class="col-md-4 col-sm-4 col-xs-6">
+						<div class="screenshot">
+							<div class="photo-box">
+								@if($rtemplate['projectTypesImages']->count() != 0)
+									@foreach($rtemplate['projectTypesImages'] as $pti)
+										@if($pti->ref_class == $pt->name)
+											<img src="{{ asset('storage/'.$pti->imagePath)}}"/> 
+										@endif
+									@endforeach
+							    @else
+								  <img src="{{ asset('images/7.jpg')}}" alt=""/>									
+								@endif
+								<div class="photo-overlay">
+									<h4>{{$pt->name}}</h4>
+								</div>
+								<span class="photo-zoom">
+									<a href="{{ config('app.url') }}/projectView/{{$pt->id}}" id="project-show-btn" class="project-details-lightbox" data-glightbox="type: external"><i class="fa fa-search-plus fa-2x"></i></a>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- Single screenshot ends -->					
+				@endforeach
+			@else
 				<!-- Single screenshot starts -->
 				<div class="col-md-4 col-sm-4 col-xs-6">
 					<div class="screenshot">
@@ -449,7 +550,7 @@
 					</div>
 				</div>
 				<!-- Single screenshot ends -->
-				
+			@endif
 			</div>
 			
 			<div id="portfolio-loader" class="center">
@@ -467,9 +568,36 @@
 				<div class="col-md-10 col-md-offset-1 center section-title">
 					<h3>Meet the Team</h3>
 				</div>			
-						<!--Features container Starts -->
-						<div id="card-ul" class="col-lg-12 features-hold baraja-container">
-						
+					<!--Features container Starts -->
+					<div id="card-ul" class="col-lg-12 features-hold baraja-container">
+						@if($rtemplate['profiles']->count() != 0)
+							@foreach($rtemplate['profiles'] as $pf)	
+							<!-- Single Feature Starts -->
+								<div class="col-lg-3 col-md-6 col-sm-6 single-feature animated" data-animation="fadeInLeft" data-animation-delay="700" title="Card style">
+									@if($rtemplate['profilesImages']->count() != 0)
+										@foreach($rtemplate['profilesImages'] as $pi)
+											@if($pi->ref_id == $pf->id)
+												<img src="{{ asset('storage/'.$pi->imagePath)}}" alt="" class="feature-image" /><!-- Feature Icon -->
+											@endif
+										@endforeach
+									@else		
+										<img src="images/client/team-1.jpg" alt="" class="feature-image" /><!-- Feature Icon -->
+									@endif
+									<h4 class="feature-title color-scheme">{{$pf->name}}</h4>
+									<p class="feature-subtitle color-scheme">{{$pf->title}}</p>
+									<p class="feature-text">
+										{{$pf->bio}}
+									</p>
+									<div class="social">
+										<a href="{{$pf->twitter}}"><i class="fa fa-twitter"></i></a>
+										<a href="{{$pf->facebook}}"><i class="fa fa-facebook"></i></a>
+										<a href="{{$pf->instagram}}"><i class="fa fa-instagram"></i></a>
+										<a href="{{$pf->linkedin}}"><i class="fa fa-linkedin"></i></a>
+									</div>
+								</div>
+								<!-- Single Feature Ends -->								
+							@endforeach
+						@else
 							<!-- Single Feature Starts -->
 							<div class="col-lg-3 col-md-6 col-sm-6 single-feature animated" data-animation="fadeInLeft" data-animation-delay="700" title="Card style">
 								<img src="images/client/team-1.jpg" alt="" class="feature-image" /><!-- Feature Icon -->
@@ -478,14 +606,12 @@
 								<p class="feature-text">
 									Curabitur posuere feugiat ipsum, sed elementum tortor maximus ut.
 								</p>
-								
 								<div class="social">
 									<a href=""><i class="fa fa-twitter"></i></a>
 									<a href=""><i class="fa fa-facebook"></i></a>
 									<a href=""><i class="fa fa-instagram"></i></a>
 									<a href=""><i class="fa fa-linkedin"></i></a>
 								</div>
-								
 							</div>
 							<!-- Single Feature Ends -->
 							
@@ -539,8 +665,9 @@
 								</div>
 							</div>
 							<!-- Single Feature Ends -->
-						</div>
-						<!--Features container Ends -->
+						@endif
+					</div>
+					<!--Features container Ends -->
 			</div>
 		</div>
 	</section>
@@ -559,11 +686,14 @@
 					</div>
 					
 					<div class="col-md-10 step-details">
-							<h3 class="step-title color-scheme">Our Achievements</h3>
+						<h3 class="step-title color-scheme">Our Achievements</h3>
+						@if($rtemplate['banners']->count() == 0)
+							<p class="step-description">{{$rtemplate['banners'][1]->body}}</p>							
+						@else
 							<p class="step-description">Cillum laboris <strong>consequat</strong>, qui elit retro next level 
 							skateboard freegan hella. Cillum laboris consequat qui elit retro next level 
 							skateboard freegan hella. Cillum laboris consequat skateboard freegan hella</p>
-							
+						@endif	
 							<div class="container animated" data-animation="fadeInLeft" data-animation-delay="700">
 								<div class="row facilities-counter g-5">
 									<div class="col-sm-6 text-start" >
@@ -600,7 +730,15 @@
 				</div>
 				<!-- Step Description Ends -->
 				<div class="col-md-5 step-img">
-					<img src="images/about/about.jpg" alt="" /> <!-- Step Photo Here -->
+					@if($rtemplate['bannersImages']->count() != 0)
+						@foreach($rtemplate['bannersImages'] as $bi)
+							@if($bi->ref_id == 2)
+								<img src="{{ asset('storage/'.$bi->imagePath)}}" alt=""  /> <!-- Step Photo Here --> 
+							@endif
+						@endforeach
+					@else	
+						<img src="images/about/about.jpg" alt="" /> <!-- Step Photo Here -->
+					@endif
 				</div>
 			</div>
 		</div>
@@ -616,6 +754,36 @@
 					<h3>What Our Valued Clients Say About us</h3>
 				</div>				
 				<div class="col-md-8 col-md-offset-2">
+				@if($rtemplate['testimonials']->count() == 0)	
+					<div class="testimonial-slider">
+						@foreach($rtemplate['testimonials'] as $ts)
+							<!-- Single Testimonial Starts -->
+							<div class="testimonial">
+								<p class="comment">
+									{{ $ts->comment}}
+								</p>				
+								<h5 class="happy-client">{{ $ts->name}}</h5>
+								<span class="client-info">{{ $ts->title}}.</span>
+							</div>
+							<!-- Single Testimonial Ends -->					
+						@endforeach
+					</div>
+					<div id="bx-pager" class="client-photos">
+						@for($a = 0; $a < 4; $a++)
+							@if($rtemplate['testimonialImages']->count() != 0)
+								@foreach($rtemplate['testimonialImages'] as $ti)	
+									@if($ti->ref_class == $rtemplate['testimonials'][a]->name)
+										<a data-slide-index="{{$a}}" href="" class="photo-hold">
+											<span class="photo-bg">
+												<img src="{{ asset('storage/'.$ti->imagePath)}}" alt="" /> <!-- Client photo 1 -->
+											</span>
+										</a>
+									@endif
+								@endforeach	
+							@endif	
+						@endfor
+					</div>
+				@else
 					<div class="testimonial-slider">
 						<!-- Single Testimonial Starts -->
 						<div class="testimonial">
@@ -673,6 +841,7 @@
 							</span>
 						</a>
 					</div>
+				@endif
 				</div>
 			</div>
 		</div>
